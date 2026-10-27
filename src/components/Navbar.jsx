@@ -29,7 +29,6 @@ export default function Navbar({ activeView, onNavigate, isAdmin, onOpenLogin, o
           </div>
           <div className="brand-text-block">
             <span className="brand-title">BIT Symposium 2026</span>
-            <span className="brand-subtitle">Department of Computer Science & Engineering</span>
           </div>
         </div>
 
