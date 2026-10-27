@@ -40,17 +40,13 @@ export default function AdminLoginModal({ isOpen, onClose, onSuccess }) {
         setLoading(false);
         onSuccess();
       } else {
-        setError('Invalid username or password. Please use admin / admin123 for demo evaluation.');
+        setError('Invalid username or password. Please try again.');
         setLoading(false);
       }
     }, 300);
   };
 
-  const handleQuickFill = () => {
-    setUsername('admin');
-    setPassword('admin123');
-    setError('');
-  };
+  
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -132,57 +128,6 @@ export default function AdminLoginModal({ isOpen, onClose, onSuccess }) {
 
         {/* Body */}
         <form onSubmit={handleSubmit} className="login-card-body">
-          {/* Demo Helper Badge */}
-          <div className="demo-credentials-pill" style={{
-            background: '#eef2ff',
-            border: '1px dashed #6366f1',
-            borderRadius: '10px',
-            padding: '0.85rem'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-              <span style={{ fontWeight: 800, color: '#3730a3', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                🔑 Review Demo Credentials
-              </span>
-              <button 
-                type="button" 
-                onClick={handleQuickFill}
-                style={{
-                  background: '#4f46e5',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '4px',
-                  padding: '0.2rem 0.5rem',
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
-                }}
-              >
-                Auto-Fill
-              </button>
-            </div>
-            <div style={{ fontSize: '0.825rem', color: '#312e81' }}>
-              Username: <code style={{ fontWeight: 700, background: '#ffffff', padding: '0.1rem 0.3rem', borderRadius: '4px' }}>admin</code> &nbsp;|&nbsp; 
-              Password: <code style={{ fontWeight: 700, background: '#ffffff', padding: '0.1rem 0.3rem', borderRadius: '4px' }}>admin123</code>
-            </div>
-          </div>
-
-          {error && (
-            <div style={{
-              background: '#fef2f2',
-              border: '1px solid #fecaca',
-              borderRadius: '8px',
-              padding: '0.75rem 1rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: '#b91c1c',
-              fontSize: '0.825rem'
-            }}>
-              <AlertCircle size={18} style={{ flexShrink: 0 }} />
-              <span>{error}</span>
-            </div>
-          )}
-
           <div className="form-group">
             <label className="form-label">
               Admin Username
@@ -192,7 +137,7 @@ export default function AdminLoginModal({ isOpen, onClose, onSuccess }) {
                 type="text"
                 className="form-input"
                 style={{ paddingLeft: '2.5rem' }}
-                placeholder="e.g. admin"
+                placeholder=""
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -211,7 +156,7 @@ export default function AdminLoginModal({ isOpen, onClose, onSuccess }) {
                 type={showPassword ? 'text' : 'password'}
                 className="form-input"
                 style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
-                placeholder="e.g. admin123"
+                placeholder=""
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
